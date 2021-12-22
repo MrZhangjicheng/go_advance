@@ -42,8 +42,8 @@ func ErrGroupJob() {
 			select {
 			case <-errCtx.Done():
 				return errCtx.Err()
-			case sig := <-sigChan:
-				return errors.Errorf("get os signal: %v", sig)
+			case <-sigChan:
+				return errors.New("get os signal: %v")
 			}
 
 		}
